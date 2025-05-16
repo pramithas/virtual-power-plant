@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: vpp_postgres
+    environment:
+      POSTGRES_DB: vppdb
+      POSTGRES_USER: vppuser
+      POSTGRES_PASSWORD: vpppass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - vpp-net
+
+  app:
+    build: .
+    container_name: vpp_app
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/vppdb
+      SPRING_DATASOURCE_USERNAME: vppuser
+      SPRING_DATASOURCE_PASSWORD: vpppass
+    ports:
+      - "8080:8080"
+    networks:
+      - vpp-net
+
+volumes:
+  pgdata:
+
+networks:
+  vpp-net:
+    driver: bridge
