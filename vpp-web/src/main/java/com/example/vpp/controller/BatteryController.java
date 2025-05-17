@@ -36,6 +36,6 @@ public class BatteryController {
             @RequestParam int end,
             @RequestParam Optional<Double> minWatt,
             @RequestParam Optional<Double> maxWatt) {
-        return ResponseEntity.ok(service.getBatteriesInRange(start, end, minWatt, maxWatt));
+        return ResponseEntity.ok(service.getBatteriesInRangeReactive(start, end, minWatt, maxWatt));
     }
 }

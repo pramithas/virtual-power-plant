@@ -34,11 +34,6 @@ public class BatteryService {
         batteryRepository.saveAll(entities);
     }
 
-
-//    public void deleteAll() {
-//            repository.deleteAll();
-//    }
-
     public BatteryStatsResponse getBatteriesInRange(int start, int end, Optional<Double> minWatt, Optional<Double> maxWatt) {
         return batteryRepository.findByPostcodeBetween(start, end).stream()
                 .filter(b -> minWatt.map(min -> b.getCapacity() >= min).orElse(true))

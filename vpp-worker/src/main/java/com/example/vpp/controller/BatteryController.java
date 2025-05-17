@@ -18,12 +18,6 @@ public class BatteryController {
 
     private final BatteryService service;
 
-    @PostMapping
-    public ResponseEntity<Void> addBatteries(@RequestBody List<BatteryEntity> batteries) {
-//        service.saveAll(batteries);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
     @DeleteMapping
     public ResponseEntity<Void> deleteAllBatteries() {
 //        service.deleteAll();
