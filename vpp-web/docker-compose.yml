@@ -1,17 +1,6 @@
+version: '3.8'
+
 services:
-  postgres:
-    image: postgres:15
-    container_name: vpp_postgres
-    environment:
-      POSTGRES_DB: vppdb
-      SPRING_DATASOURCE_USERNAME: vppuser
-      SPRING_DATASOURCE_PASSWORD: vpppass
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - vpp-net
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -41,27 +30,19 @@ services:
     networks:
       - vpp-net
 
-  vpp-web:
+  app:
     build:
-      context: .
+      context: ../
       dockerfile: vpp-web/Dockerfile
+    container_name: vpp_web
+    depends_on:
+      - kafka
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/vppdb
+      SPRING_DATASOURCE_USERNAME: vppuser
+      SPRING_DATASOURCE_PASSWORD: vpppass
     ports:
       - "8080:8080"
-    depends_on:
-      - kafka
-    networks:
-      - vpp-net
-
-  vpp-worker:
-    build:
-      context: .
-      dockerfile: vpp-worker/Dockerfile
-    ports:
-      - "9000:9000"
-    depends_on:
-      - kafka
-    networks:
-      - vpp-net
 
 volumes:
   pgdata:
@@ -69,3 +50,4 @@ volumes:
 
 networks:
   vpp-net:
+    driver: bridge

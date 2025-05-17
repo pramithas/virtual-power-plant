@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: vpp
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/vppdb}
+    username: ${SPRING_DATASOURCE_USERNAME:vppuser}
+    password: ${SPRING_DATASOURCE_PASSWORD:vpppass}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
+
+  kafka:
+    consumer:
+      group-id: vpp
+      bootstrap-servers: kafka:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: com.example.vpp.dto
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  logging:
+    level:
+      org.springframework.web:DEBUG
+
+server:
+  port: 9000
