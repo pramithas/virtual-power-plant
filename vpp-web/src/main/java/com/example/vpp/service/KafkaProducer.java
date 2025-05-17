@@ -1,7 +1,6 @@
 package com.example.vpp.service;
 
 import com.example.vpp.dto.BatteryData;
-import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 

@@ -14,7 +14,7 @@ public class WebClientConfig {
     @Bean
     public WebClient batteryWorkerWebClient() {
         return WebClient.builder()
-                .baseUrl("http://vpp-worker:9000")
+                .baseUrl("http://vpp-worker")
                 .clientConnector(new ReactorClientHttpConnector(
                         HttpClient.create()
                                 .responseTimeout(Duration.ofSeconds(5))

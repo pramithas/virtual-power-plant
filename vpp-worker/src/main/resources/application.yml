@@ -1,6 +1,9 @@
 spring:
   application:
-    name: vpp
+    name: vpp-worker
+  cloud:
+    discovery:
+      enabled: true
 
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/vppdb}
@@ -28,3 +31,8 @@ spring:
 
 server:
   port: 9000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka

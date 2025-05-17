@@ -1,6 +1,9 @@
 spring:
   application:
-    name: vpp
+    name: vpp-web
+  cloud:
+    discovery:
+      enabled: true
 
   kafka:
     bootstrap-servers: kafka:9092
@@ -16,3 +19,8 @@ spring:
   logging:
     level:
       org.springframework.web:DEBUG
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka

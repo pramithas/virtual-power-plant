@@ -49,6 +49,7 @@ services:
       - "8080:8080"
     depends_on:
       - kafka
+      - discovery
     networks:
       - vpp-net
 
@@ -60,6 +61,17 @@ services:
       - "9000:9000"
     depends_on:
       - kafka
+      - discovery
+    networks:
+      - vpp-net
+
+  discovery:
+    build:
+      context: .
+      dockerfile: vpp-service-discovery/Dockerfile
+    container_name: vpp_service_discovery
+    ports:
+      - "8761:8761"
     networks:
       - vpp-net
 
