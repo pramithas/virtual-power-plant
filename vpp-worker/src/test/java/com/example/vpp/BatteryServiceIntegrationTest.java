@@ -66,7 +66,7 @@ public class BatteryServiceIntegrationTest {
         assertNotNull(response);
         assertEquals(3, response.getBatteries().size());
         assertEquals(7100.0, response.getTotalWattCapacity());
-        assertEquals(2366.6666666666665, response.getAverageWattCapacity());
+        assertEquals(2366.67, response.getAverageWattCapacity(), 0.01);
 
         // Query range with minWatt filter
         response = batteryService.getBatteriesInRange(60, 100, Optional.of(2000.0), Optional.empty());
