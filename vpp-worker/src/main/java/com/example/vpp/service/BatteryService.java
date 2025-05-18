@@ -31,11 +31,13 @@ public class BatteryService {
                 })
                 .toList();
 
-        batteryRepository.saveAll(entities);
+        List<BatteryEntity> batteryEntities = batteryRepository.saveAll(entities);
     }
 
     public BatteryStatsResponse getBatteriesInRange(int start, int end, Optional<Double> minWatt, Optional<Double> maxWatt) {
-        return batteryRepository.findByPostcodeBetween(start, end).stream()
+        List<BatteryEntity> battery =  batteryRepository.findByPostcodeBetween(start, end);
+        batteryRepository.findAll().forEach(System.out::println);
+        return battery.stream()
                 .filter(b -> minWatt.map(min -> b.getCapacity() >= min).orElse(true))
                 .filter(b -> maxWatt.map(max -> b.getCapacity() <= max).orElse(true))
                 .sorted(Comparator.comparing(BatteryEntity::getName))

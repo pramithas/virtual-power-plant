@@ -1,11 +1,12 @@
-# Stage 1: Build the app
-FROM eclipse-temurin:17-jdk-jammy AS builder
-WORKDIR /app
-COPY . .
-RUN ./mvnw clean package -DskipTests
+FROM openjdk:17-jdk-slim
 
-# Stage 2: Run the app
-FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-COPY --from=builder /app/target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Copy the whole project
+COPY . .
+
+# Download dependencies and compile but skip tests to speed build
+RUN ./mvnw clean install -DskipTests
+
+# Default command runs the integration tests
+CMD ["./mvnw", "verify"]

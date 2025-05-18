@@ -1,4 +1,4 @@
-package com.example.vpp.repository;//package com.example.vpp.repository;
+package com.example.vpp.repository;
 
 import com.example.vpp.model.BatteryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
