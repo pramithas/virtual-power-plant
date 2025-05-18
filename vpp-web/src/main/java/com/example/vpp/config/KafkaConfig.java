@@ -1,6 +1,5 @@
 package com.example.vpp.config;
 
-import com.example.vpp.dto.Battery;
 import com.example.vpp.dto.BatteryData;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

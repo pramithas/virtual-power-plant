@@ -1,14 +1,10 @@
 package com.example.vpp.controller;
 
 import com.example.vpp.dto.BatteryStatsResponse;
-import com.example.vpp.model.BatteryEntity;
 import com.example.vpp.service.BatteryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,12 +13,6 @@ import java.util.Optional;
 public class BatteryController {
 
     private final BatteryService service;
-
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllBatteries() {
-//        service.deleteAll();
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
 
     @GetMapping("/range")
     public ResponseEntity<BatteryStatsResponse> getBatteriesInRange(

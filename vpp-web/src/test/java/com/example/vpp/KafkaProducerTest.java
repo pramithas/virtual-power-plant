@@ -4,11 +4,8 @@ import com.example.vpp.dto.BatteryData;
 import com.example.vpp.service.KafkaProducer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.kafka.core.KafkaTemplate;
-
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class KafkaProducerTest {
 

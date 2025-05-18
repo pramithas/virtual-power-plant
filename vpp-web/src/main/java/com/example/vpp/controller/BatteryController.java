@@ -24,12 +24,6 @@ public class BatteryController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteAllBatteries() {
-//        service.deleteAll();
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
     @GetMapping("/range")
     public ResponseEntity<BatteryStatsResponse> getBatteriesInRange(
             @RequestParam int start,
