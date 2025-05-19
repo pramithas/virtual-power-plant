@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -40,8 +42,6 @@ public class KafkaProducer {
             throw new IllegalArgumentException("Message cannot be null");
         }
 
-        LOG.info("Preparing to send battery data message with {} batteries",
-                message.getBatteryList().size());
         LOG.debug("Message details: {}", message);
 
         try {

@@ -68,13 +68,13 @@ class BatteryServiceIntegrationTest {
     @Test
     void testGetBatteriesInRangeReactive() {
         // Prepare mock response JSON (adjust according to your BatteryStatsResponse JSON structure)
-        String jsonResponse = "{\"batteries\":[\"Battery1\",\"Battery2\"],\"totalWattCapacity\":300.0,\"minWatt\":100.0}";
+        String jsonResponse = "{\"batteryNames\":[\"Battery1\",\"Battery2\"],\"totalWattCapacity\":300.0,\"minWatt\":100.0}";
 
         mockWebServer.enqueue(new MockResponse()
                 .setBody(jsonResponse)
                 .addHeader("Content-Type", "application/json"));
 
-        BatteryStatsResponse response = batteryService.getBatteriesInRangeReactive(1, 2, Optional.empty(), Optional.empty());
+        BatteryStatsResponse response = batteryService.getBatteriesInRangeReactive(300, 350, Optional.empty(), Optional.empty());
 
         assertNotNull(response);
         assertEquals(2, response.getBatteryNames().size());
