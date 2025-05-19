@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BatteryStatsResponse {
-    private List<String> batteries;
+    private List<String> batteryNames;
     private double totalWattCapacity;
     private double averageWattCapacity;
 }

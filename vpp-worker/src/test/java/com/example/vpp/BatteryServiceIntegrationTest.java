@@ -57,14 +57,14 @@ public class BatteryServiceIntegrationTest {
         // Query range including all
         BatteryStatsResponse response = batteryService.getBatteriesInRange(50, 100, Optional.empty(), Optional.empty());
         assertNotNull(response);
-        assertEquals(3, response.getBatteries().size());
+        assertEquals(3, response.getBatteryNames().size());
         assertEquals(7100.0, response.getTotalWattCapacity());
         assertEquals(2366.67, response.getAverageWattCapacity(), 0.01);
 
         // Query range with minWatt filter
         response = batteryService.getBatteriesInRange(60, 100, Optional.of(2000.0), Optional.empty());
-        assertEquals(2, response.getBatteries().size());
-        assertTrue(response.getBatteries().contains("Battery A"));
-        assertTrue(response.getBatteries().contains("Battery C"));
+        assertEquals(2, response.getBatteryNames().size());
+        assertTrue(response.getBatteryNames().contains("Battery A"));
+        assertTrue(response.getBatteryNames().contains("Battery C"));
     }
 }

@@ -70,7 +70,7 @@ public class BatteryServiceTest {
         BatteryStatsResponse result = batteryService.getBatteriesInRangeReactive(1, 2, Optional.empty(), Optional.empty());
 
         assertNotNull(result);
-        assertEquals(2, result.getBatteries().size());
+        assertEquals(2, result.getBatteryNames().size());
         assertEquals(300.0, result.getTotalWattCapacity());
     }
 }

@@ -77,7 +77,7 @@ class BatteryServiceIntegrationTest {
         BatteryStatsResponse response = batteryService.getBatteriesInRangeReactive(1, 2, Optional.empty(), Optional.empty());
 
         assertNotNull(response);
-        assertEquals(2, response.getBatteries().size());
+        assertEquals(2, response.getBatteryNames().size());
         assertEquals(300.0, response.getTotalWattCapacity());
     }
 
