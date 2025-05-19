@@ -14,7 +14,7 @@
 * Spring Cloud (Eureka for service discovery)
 * Apache Kafka
 * Docker + Docker Compose
-* JPA/Hibernate + H2 Database
+* JPA/Hibernate + Postgresql Database
 * Lombok
 * Maven
 
